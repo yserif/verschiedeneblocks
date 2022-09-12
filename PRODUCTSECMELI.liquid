@@ -1,8 +1,5 @@
 {% comment%}
 Yasin Serif Akay
-Eklendi
-Ikinci Eklendi
-Ucuncu eklendi
 {% endcomment%}
 
 <div class="page-width">
@@ -94,123 +91,107 @@ Ucuncu eklendi
 
 
 {% schema %}
+
 {
-  "name": {
-   
-    "de": "Logoliste",
-    "en": "Logo list"
-  },
-  "class": "index-section",
-  "max_blocks": 3,
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": {
-       
-        "de": "Titel",
-        "en": "Heading"
-      },
-      "default": {
-       
+    "name": {
         "de": "Logoliste",
         "en": "Logo list"
-      }
     },
-         {
-      "type": "checkbox",
-      "id": "show_producttitle",
-      "label": {
-        
-        "de": "Product Title anzeigen",
-        "en": "Show  Product Title"
-      },
-      "default": true
-    },
-       {
-      "type": "checkbox",
-      "id": "show_addtocart",
-      "label": {
-        
-        "de": "Add to cart anzeigen",
-        "en": "Show Add to cart"
-      },
-      "default": true
-    }
-  ],
-  "blocks": [
-    {
-      "type": "logo_image",
-      "name": {
-         "de": "Logo",
-        "en": "Logo"
-      },
-      "settings": [
-       {
-  "type": "color",
-  "id": "foto_renk",
-  "label": "Body text",
-  "default": "#000000"
-},
+    "class": "index-section",
+    "max_blocks": 3,
+    "settings": [
         {
-  "type": "font_picker",
-  "id": "product_fonts",
-  "label": "Heading font",
-  "default": "helvetica_n4"
-},
-        {
-  "type": "text",
-  "id": "foto_text",
-  "label": "Heading",
-  "default": "Quick links"
-},
-        
-        {
-  "type": "product",
-  "id": "product",
-  "label": "Product"
-},
-       
-        {
-          "type": "url",
-          "id": "link",
-          "label": {
-            "de": "Link",
-            "en": "Link"
-          },
-          "info": {
-           
-            "de": "Optional",
-            "en": "Optional"
-          }
+            "type": "text",
+            "id": "title",
+            "label": {
+                "de": "Titel",
+                "en": "Heading"
+            },
+            "default": {
+                "de": "Logoliste",
+                "en": "Logo list"
+            }
+        }, {
+            "type": "checkbox",
+            "id": "show_producttitle",
+            "label": {
+                "de": "Product Title anzeigen",
+                "en": "Show  Product Title"
+            },
+            "default": true
+        }, {
+            "type": "checkbox",
+            "id": "show_addtocart",
+            "label": {
+                "de": "Add to cart anzeigen",
+                "en": "Show Add to cart"
+            },
+            "default": true
         }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": {
-      
-        "de": "YENI PRODUCT SECIM VARMI CHECK",
-        "en": "Logo list"
-      },
-      "category": {
-        
-        "de": "Foto",
-        "en": "Image"
-      },
-      "blocks": [
+    ],
+    "blocks": [
         {
-          "type": "logo_image"
-        },
-         {
-          "type": "logo_image"
-        },
-          {
-          "type": "logo_image"
+            "type": "logo_image",
+            "name": {
+                "de": "Logo",
+                "en": "Logo"
+            },
+            "settings": [
+                {
+                    "type": "color",
+                    "id": "foto_renk",
+                    "label": "Body text",
+                    "default": "#000000"
+                }, {
+                    "type": "font_picker",
+                    "id": "product_fonts",
+                    "label": "Heading font",
+                    "default": "helvetica_n4"
+                }, {
+                    "type": "text",
+                    "id": "foto_text",
+                    "label": "Heading",
+                    "default": "Quick links"
+                }, {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Product"
+                }, {
+                    "type": "url",
+                    "id": "link",
+                    "label": {
+                        "de": "Link",
+                        "en": "Link"
+                    },
+                    "info": {
+                        "de": "Optional",
+                        "en": "Optional"
+                    }
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ],
+    "presets": [
+        {
+            "name": {
+                "de": "YENI PRODUCT SECIM VARMI CHECK",
+                "en": "Logo list"
+            },
+            "category": {
+                "de": "Foto",
+                "en": "Image"
+            },
+            "blocks": [
+                {
+                    "type": "logo_image"
+                }, {
+                    "type": "logo_image"
+                }, {
+                    "type": "logo_image"
+                }
+            ]
+        }
+    ]
 }
+
 {% endschema %}
