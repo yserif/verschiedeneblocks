@@ -1,197 +1,173 @@
-{% comment%}
-Yasin Serif Akay
-{% endcomment%}
-
+{% comment %}
+    Yasin Serif Akay
+{% endcomment %}
 <div class="page-width">
-  {% if section.settings.title != blank %}
-    <div class="section-header text-center">
-      <h2>{{ section.settings.title | escape }}</h2>
-    </div>
-  {% endif %}
-
-  {% if section.blocks.size > 0 %}
-    <ul class="logo-bar{% if section.settings.title_enable %} logo-bar--large{% endif %}">
-      {% for block in section.blocks %}
-        <li class="productaresim__item{% if section.settings.title_enable %} productaresim__item--large{% endif %}" {{ block.shopify_attributes }}>
-          {% if block.settings.link != blank %}
-            <a href="{{ block.settings.link }}" class="logo-bar__link">
-          {% endif %}
-         <h5 style="font-family:{{block.settings.product_fonts }}">{{  block.settings.foto_text }} </h5>
-              <br> 
-              <h5 style="color:{{block.settings.foto_renk }}">{{  block.settings.foto_text }} </h5>
-          {% if block.settings.product != blank %}
-
-             
-       <img src="{{block.settings.product.images.first  |  product_img_url: '350x350'  }}" class="productaresim" ></a>
-
-             <div class="product">
-   {%- if section.settings.show_producttitle -%}
-          <div >
-      <h1>{{ block.settings.product.title }}</h1>
-           </div>
-
-        {%- endif -%}
-
-
-               
-
-        
-               
-               
-        <img src="{{ block.settings.product.featured_image | img_url: 'large' }}" alt="{{ block.settings.product.featured_image.alt | escape }}" id="ProductPhotoImg">
-     
-
-     {%- if section.settings.show_addtocart -%}
-           <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
-            <select name="id" id="productSelect">
-                {% for variant in block.settings.product.variants %}
-                    {% if variant.available %}
-                        <option value="{{ variant.id }}">
-                            {{ variant.title }} - {{ variant.price | money_with_currency }}
-                        </option>
-                    {% else %}
-                        <option disabled="disabled">
-                            {{ variant.title }} - sold out
-                        </option>
-                    {% endif %}
-                {% endfor %}
-            </select>
-            {{ current_variant.price | money }}
-               <div >
-                         <input type="number" id="Quantity" name="quantity" value="1" min="1">
-           <input type="submit" value="Add to cart" class="btn" />
-           </div>
-
-        {%- endif -%}
-
-
-        </form>
-      
-  
-    </div>
-          
-
-              
-            {% else %}
-            {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
-          {% endif %}
-          {% if block.settings.link != blank %}
-            </a>
-          {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-
-  {% if section.blocks.size == 0 %}
-    {% include 'no-blocks' %}
-  {% endif %}
-</div>
-
-
-
-{% schema %}
-
-{
-    "name": {
-        "de": "Logoliste",
-        "en": "Logo list"
-    },
-    "class": "index-section",
-    "max_blocks": 3,
-    "settings": [
-        {
-            "type": "text",
-            "id": "title",
-            "label": {
-                "de": "Titel",
-                "en": "Heading"
-            },
-            "default": {
-                "de": "Logoliste",
-                "en": "Logo list"
-            }
-        }, {
-            "type": "checkbox",
-            "id": "show_producttitle",
-            "label": {
-                "de": "Product Title anzeigen",
-                "en": "Show  Product Title"
-            },
-            "default": true
-        }, {
-            "type": "checkbox",
-            "id": "show_addtocart",
-            "label": {
-                "de": "Add to cart anzeigen",
-                "en": "Show Add to cart"
-            },
-            "default": true
-        }
-    ],
-    "blocks": [
-        {
-            "type": "logo_image",
-            "name": {
-                "de": "Logo",
-                "en": "Logo"
-            },
-            "settings": [
-                {
-                    "type": "color",
-                    "id": "foto_renk",
-                    "label": "Body text",
-                    "default": "#000000"
-                }, {
-                    "type": "font_picker",
-                    "id": "product_fonts",
-                    "label": "Heading font",
-                    "default": "helvetica_n4"
-                }, {
-                    "type": "text",
-                    "id": "foto_text",
-                    "label": "Heading",
-                    "default": "Quick links"
-                }, {
-                    "type": "product",
-                    "id": "product",
-                    "label": "Product"
-                }, {
-                    "type": "url",
-                    "id": "link",
-                    "label": {
-                        "de": "Link",
-                        "en": "Link"
-                    },
-                    "info": {
-                        "de": "Optional",
-                        "en": "Optional"
+    {% if section.settings.title != blank %}
+        <div class="section-header text-center">
+            <h2>{{ section.settings.title | escape }}</h2>
+        </div>
+    {% endif %}
+    {% if section.blocks.size > 0 %}
+        <ul class="logo-bar{% if section.settings.title_enable %} logo-bar--large{% endif %}">
+            {% for block in section.blocks %}
+                <li class="productaresim__item{% if section.settings.title_enable %} productaresim__item--large{% endif %}" {{ block.shopify_attributes }}>
+                    {% if block.settings.link != blank %}
+                        <a href="{{ block.settings.link }}" class="logo-bar__link">
+                        {% endif %}
+                        <h5 style="font-family:{{ block.settings.product_fonts }}">{{ block.settings.foto_text }}
+                        </h5>
+                        <br>
+                            <h5 style="color:{{ block.settings.foto_renk }}">{{ block.settings.foto_text }}
+                            </h5>
+                            {% if block.settings.product != blank %}
+                                <img src="{{ block.settings.product.images.first | product_img_url: '350x350' }}" class="productaresim"></a>
+                                <div class="product">
+                                    {%- if section.settings.show_producttitle -%}
+                                        <div>
+                                            <h1>{{ block.settings.product.title }}</h1>
+                                        </div>
+                                    {%- endif -%}
+                                    <img src="{{ block.settings.product.featured_image | img_url: 'large' }}" alt="{{ block.settings.product.featured_image.alt | escape }}" id="ProductPhotoImg">
+                                        {%- if section.settings.show_addtocart -%}
+                                            <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+                                                <select name="id" id="productSelect">
+                                                    {% for variant in block.settings.product.variants %}
+                                                        {% if variant.available %}
+                                                            <option value="{{ variant.id }}">
+                                                                {{ variant.title }}
+                                                                -
+                                                                {{ variant.price | money_with_currency }}
+                                                            </option>
+                                                        {% else %}
+                                                            <option disabled="disabled">
+                                                                {{ variant.title }}
+                                                                - sold out
+                                                            </option>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </select>
+                                                {{ current_variant.price | money }}
+                                                <div>
+                                                    <input type="number" id="Quantity" name="quantity" value="1" min="1">
+                                                        <input type="submit" value="Add to cart" class="btn"/>
+                                                    </div>
+                                                {%- endif -%}
+                                            </form>
+                                        </div>
+                                    {% else %}
+                                        {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+                                    {% endif %}
+                                    {% if block.settings.link != blank %}
+                                    </a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                {% if section.blocks.size == 0 %}
+                    {% include 'no-blocks' %}
+                {% endif %}
+            </div>
+            {% schema %}
+            {
+                "name": {
+                    "de": "Logoliste",
+                    "en": "Logo list"
+                },
+                "class": "index-section",
+                "max_blocks": 3,
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": {
+                            "de": "Titel",
+                            "en": "Heading"
+                        },
+                        "default": {
+                            "de": "Logoliste",
+                            "en": "Logo list"
+                        }
+                    }, {
+                        "type": "checkbox",
+                        "id": "show_producttitle",
+                        "label": {
+                            "de": "Product Title anzeigen",
+                            "en": "Show  Product Title"
+                        },
+                        "default": true
+                    }, {
+                        "type": "checkbox",
+                        "id": "show_addtocart",
+                        "label": {
+                            "de": "Add to cart anzeigen",
+                            "en": "Show Add to cart"
+                        },
+                        "default": true
                     }
-                }
-            ]
-        }
-    ],
-    "presets": [
-        {
-            "name": {
-                "de": "YENI PRODUCT SECIM VARMI CHECK",
-                "en": "Logo list"
-            },
-            "category": {
-                "de": "Foto",
-                "en": "Image"
-            },
-            "blocks": [
-                {
-                    "type": "logo_image"
-                }, {
-                    "type": "logo_image"
-                }, {
-                    "type": "logo_image"
-                }
-            ]
-        }
-    ]
-}
-
-{% endschema %}
+                ],
+                "blocks": [
+                    {
+                        "type": "logo_image",
+                        "name": {
+                            "de": "Logo",
+                            "en": "Logo"
+                        },
+                        "settings": [
+                            {
+                                "type": "color",
+                                "id": "foto_renk",
+                                "label": "Body text",
+                                "default": "#000000"
+                            }, {
+                                "type": "font_picker",
+                                "id": "product_fonts",
+                                "label": "Heading font",
+                                "default": "helvetica_n4"
+                            }, {
+                                "type": "text",
+                                "id": "foto_text",
+                                "label": "Heading",
+                                "default": "Quick links"
+                            }, {
+                                "type": "product",
+                                "id": "product",
+                                "label": "Product"
+                            }, {
+                                "type": "url",
+                                "id": "link",
+                                "label": {
+                                    "de": "Link",
+                                    "en": "Link"
+                                },
+                                "info": {
+                                    "de": "Optional",
+                                    "en": "Optional"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "presets": [
+                    {
+                        "name": {
+                            "de": "YENI PRODUCT SECIM VARMI CHECK",
+                            "en": "Logo list"
+                        },
+                        "category": {
+                            "de": "Foto",
+                            "en": "Image"
+                        },
+                        "blocks": [
+                            {
+                                "type": "logo_image"
+                            }, {
+                                "type": "logo_image"
+                            }, {
+                                "type": "logo_image"
+                            }
+                        ]
+                    }
+                ]
+            }
+            {% endschema %}
